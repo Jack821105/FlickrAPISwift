@@ -9,9 +9,6 @@ Flickr MVC Example project
 在此項目中，使用，** UICollectionView **用於顯示搜索結果。
 它將調用請求異步並同時基於backgroud中的頁數顯示新圖像。
 
-＃＃ 入門
--無需直接使用Pod安裝
--創建Flickr API密鑰
 
 ##  要求
 * XCode 9.3或更高版本
