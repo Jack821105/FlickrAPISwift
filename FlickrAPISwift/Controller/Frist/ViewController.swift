@@ -23,6 +23,8 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         
         btSearch?.isUserInteractionEnabled = false
         btSearch?.alpha = 0.5
+        btSearch.setTitleColor(UIColor.white, for: .normal)
+        btSearch?.backgroundColor = UIColor.gray
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
         self.view.addGestureRecognizer(tap)
         
@@ -37,9 +39,14 @@ class ViewController: UIViewController ,UITextFieldDelegate{
             if !text.isEmpty{
                 btSearch?.isUserInteractionEnabled = true
                 btSearch?.alpha = 1.0
+                btSearch?.backgroundColor = UIColor.blue
+                btSearch.setTitleColor(UIColor.white, for: .normal)
+                
             } else {
                 btSearch?.isUserInteractionEnabled = false
                 btSearch?.alpha = 0.5
+                btSearch?.backgroundColor = UIColor.gray
+                
             }
             return true
         }

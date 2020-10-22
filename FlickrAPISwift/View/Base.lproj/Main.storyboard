@@ -40,7 +40,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="C4C-rc-geR"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="搜尋"/>
                                 <connections>
                                     <segue destination="Dn4-sz-wto" kind="show" identifier="" destinationCreationSelector="actionSencond:" id="cf5-Q5-kfh"/>
                                 </connections>

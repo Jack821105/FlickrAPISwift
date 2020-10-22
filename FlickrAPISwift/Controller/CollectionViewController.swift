@@ -29,6 +29,10 @@ class CollectionViewController: UICollectionViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        self.navigationItem.title = "搜尋結果 \(text!)"
+
+        
+        
         //控制cell
         let itemSpace: CGFloat = 2
         let columnCount: CGFloat = 2
