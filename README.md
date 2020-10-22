@@ -16,7 +16,7 @@ Flickr MVC Example project
 
 ## Flickr API文檔
 
-通過點擊[Flickr API]（https://www.flickr.com/services/api/flickr.photos.search.html）檢索圖像。
+通過點擊[Flickr API] https://www.flickr.com/photos/190775964@N08/
 
 -**搜索路徑：**
 
