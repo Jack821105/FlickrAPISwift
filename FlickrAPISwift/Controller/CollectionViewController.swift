@@ -30,7 +30,7 @@ class CollectionViewController: UICollectionViewController {
         collectionView.dataSource = self
         
         //控制cell
-        let itemSpace: CGFloat = 1
+        let itemSpace: CGFloat = 2
         let columnCount: CGFloat = 2
         let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
         let width = floor((collectionView.bounds.width  - itemSpace * (columnCount)) / columnCount)
