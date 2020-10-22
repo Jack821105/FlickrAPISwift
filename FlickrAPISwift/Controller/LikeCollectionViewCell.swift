@@ -44,14 +44,13 @@ class LikeCollectionViewCell: UICollectionViewCell {
         
         Network.shared.deletedMyLike(outLikePhoto: photo!) { (rep) in
             if rep == 1{
-                print("刪除成功")
+                print("成功")
             }else{
-                print("刪除失敗")
+                print("失敗")
             }
         }
         
     }
-    
     
     
 }
