@@ -39,4 +39,77 @@ class Network{
         return urlPath
     }
     
+    
+    //加入我的最愛
+    func addMyLike(outPhoto inPhoto:Photo ,handler:@escaping (Int) -> Void) {
+        struct keyvalue:Codable{
+            let data : Photo
+        }
+        var url = URL(string: "https://sheetdb.io/api/v1/q5xzqpddkdsmm")
+        var req = URLRequest(url: url!)
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try? JSONEncoder().encode(keyvalue(data: inPhoto))
+        URLSession.shared.dataTask(with: req) { (data, response, error) in
+            if let error = error{
+                print("error:\(error.localizedDescription)")
+            }else if let response = response, let data = data{
+                print("response:\(response)")
+                if let decoder = try? JSONDecoder().decode([String:Int].self, from: data){
+                    if decoder["created"] == 1{
+                        handler(1)
+                    }else{
+                        handler(0)
+                    }
+                }
+            }
+        }.resume()
+        
+    }
+    
+    //取讀我的最愛
+    func getMyLike(handler:@escaping ([LikePhoto]) -> Void) {
+        
+        var url = URL(string: "https://sheetdb.io/api/v1/q5xzqpddkdsmm")
+        var req = URLRequest(url: url!)
+        req.httpMethod = "GET"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        URLSession.shared.dataTask(with: req) { (data, response, error) in
+            if let error = error {
+                print("error :\(error.localizedDescription)")
+            }else if let response = response, let data = data{
+                print("response:\(response)")
+                let decoder = try! JSONDecoder().decode([LikePhoto].self, from: data)
+                if let decoder = try? JSONDecoder().decode([LikePhoto].self, from: data)
+                {
+                    handler(decoder)
+                    print("test1")
+                }
+            }
+        }.resume()
+    }
+    
+    //刪除我的最愛
+    func deletedMyLike(outLikePhoto inLikePhoto:LikePhoto ,handler:@escaping (Int)-> Void)  {
+        var url = URL(string: "https://sheetdb.io/api/v1/q5xzqpddkdsmm/id/\(inLikePhoto.id)")
+        var req = URLRequest(url: url!)
+        req.httpMethod = "DELETE"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try? JSONEncoder().encode(inLikePhoto.id)
+        URLSession.shared.dataTask(with: req) { (data, response, error) in
+            if let error = error{
+                print("error:\(error)")
+            }else if let response = response, let data = data{
+                print("response:\(response)")
+                let decoder = try? JSONDecoder().decode([String:Int].self, from: data)
+                if decoder?["deleted"] == 1{
+                    handler(1)
+                }else{
+                    handler(0)
+                }
+            }
+        }.resume()
+        
+    }
+    
 }

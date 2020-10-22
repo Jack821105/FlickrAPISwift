@@ -21,8 +21,6 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         lbText.delegate = self
         lbPage.delegate = self
         
-        
-        
         btSearch?.isUserInteractionEnabled = false
         btSearch?.alpha = 0.5
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))

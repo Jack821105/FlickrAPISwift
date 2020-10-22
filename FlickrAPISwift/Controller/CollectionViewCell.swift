@@ -11,10 +11,10 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var ivPhoto: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
-    @IBOutlet weak var btLike: UIButton!
+    //    @IBOutlet weak var btLike: UIButton!
     var photo:Photo?
-
-    
+    var photoData = [Photo]()
+    var userDefaults = UserDefaults.standard
     
     func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -42,15 +42,17 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     
-    
-    
-    
-    
-    
     @IBAction func actionLike(_ sender: Any) {
-     
         
-     
+        Network.shared.addMyLike(outPhoto: photo!) { (i) in
+            if i == 1{
+                print("上傳成功")
+            }else{
+                print("上傳失敗")
+            }
+        }
         
     }
+    
+    
 }

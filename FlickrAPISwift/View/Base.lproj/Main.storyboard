@@ -98,7 +98,7 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kiE-aI-xzo">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="140"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v71-an-kmg">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v71-an-kmg">
                                             <rect key="frame" x="8" y="146" width="153" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="Bq0-sm-8Kg"/>
@@ -107,11 +107,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkZ-WK-uVd">
-                                            <rect key="frame" x="169" y="148.5" width="33" height="20"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkZ-WK-uVd">
+                                            <rect key="frame" x="169" y="147.5" width="33" height="19.5"/>
                                             <state key="normal" backgroundImage="heart" catalog="system"/>
                                             <connections>
-                                                <action selector="actionLike:" destination="0FT-Pe-r1e" eventType="touchUpInside" id="Bae-dk-4I7"/>
+                                                <action selector="actionLike:" destination="0FT-Pe-r1e" eventType="touchUpInside" id="eNq-OX-KSh"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -131,7 +131,6 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="202" height="175"/>
                                 <connections>
-                                    <outlet property="btLike" destination="OkZ-WK-uVd" id="B8D-88-80X"/>
                                     <outlet property="ivPhoto" destination="kiE-aI-xzo" id="rBn-b9-FYk"/>
                                     <outlet property="lbTitle" destination="v71-an-kmg" id="Veh-Zd-bLE"/>
                                 </connections>
@@ -176,7 +175,7 @@
                                                 <constraint firstAttribute="height" constant="122" id="WWn-qf-DtZ"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-lC-SDR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPs-lC-SDR">
                                             <rect key="frame" x="8" y="131" width="147" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -189,6 +188,9 @@
                                                 <constraint firstAttribute="height" constant="20.5" id="h4u-HG-Amq"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="clear" catalog="system"/>
+                                            <connections>
+                                                <action selector="actionDeleted:" destination="rnY-FI-xyt" eventType="touchUpInside" id="Dss-4Z-0cL"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

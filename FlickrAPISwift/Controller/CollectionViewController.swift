@@ -64,9 +64,9 @@ class CollectionViewController: UICollectionViewController {
     }
     
     
-
     
-
+    
+    
     //更新資料
     @objc func loadData(){
         showLoadingView()
@@ -149,4 +149,9 @@ class CollectionViewController: UICollectionViewController {
             self.containerView = nil
         }
     }
+    
+    
+    
 }
+
+

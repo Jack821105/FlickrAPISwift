@@ -10,14 +10,15 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class LilkeCollectionViewController: UICollectionViewController {
-
-    var photoList:SearchData?
-
+    
+    var photoData = [LikePhoto]()
+    var userDefaults = UserDefaults.standard
+    var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        
         //控制cell
         let itemSpace: CGFloat = 0
         let columnCount: CGFloat = 2
@@ -29,38 +30,48 @@ class LilkeCollectionViewController: UICollectionViewController {
         flowLayout?.minimumInteritemSpacing = itemSpace
         flowLayout?.minimumLineSpacing = itemSpace
         flowLayout?.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-
+        
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        Network.shared.getMyLike { (likePhoto) in
+            if likePhoto != nil{
+                self.photoData = likePhoto
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return photoList?.photos.photo.count ?? 100
+        print("count:\(photoData.count)")
+        return photoData.count ?? 0
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(LikeCollectionViewCell.self)", for: indexPath) as? LikeCollectionViewCell
         
-        cell?.lbTitle.text = "test"
-        cell?.ivPhoto.image = UIImage(systemName: "questionmark.circle")
-    
+        cell?.photo = photoData[indexPath.row]
+        cell?.update()
+        
         // Configure the cell
         if let cell = cell {
             return cell
         }else {
             return CollectionViewCell()
         }
-        
     }
-
+    
+    
 }
