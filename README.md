@@ -1,4 +1,7 @@
+
 # FlickrAPISwift
+
+Flickr MVC Example project
 
 這是Flickr圖像搜索模塊的基本示例，它會根據您的關鍵字搜索任何關鍵字，然後
 用滾動顯示圖像，並且能上拉去載入更新的圖片，下拉會重新整理資料。
