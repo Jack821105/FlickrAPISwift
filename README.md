@@ -15,8 +15,7 @@ Flickr MVC Example project
 * Swift 4.0
 
 ## Flickr API文檔
-
-通過點擊[Flickr API] https://www.flickr.com/photos/190775964@N08/
+https://www.flickr.com/services/apps/create/
 
 -**搜索路徑：**
 
