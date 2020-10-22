@@ -33,45 +33,51 @@ class ViewController: UIViewController ,UITextFieldDelegate{
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-            let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-
-            if !text.isEmpty{
-                btSearch?.isUserInteractionEnabled = true
-                btSearch?.alpha = 1.0
-                btSearch?.backgroundColor = UIColor.blue
-                btSearch.setTitleColor(UIColor.white, for: .normal)
-                
-            } else {
-                btSearch?.isUserInteractionEnabled = false
-                btSearch?.alpha = 0.5
-                btSearch?.backgroundColor = UIColor.gray
-                
-            }
-            return true
+        
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        if !text.isEmpty{
+            btSearch?.isUserInteractionEnabled = true
+            btSearch?.alpha = 1.0
+            btSearch?.backgroundColor = UIColor.blue
+            btSearch.setTitleColor(UIColor.white, for: .normal)
+            
+        } else {
+            btSearch?.isUserInteractionEnabled = false
+            btSearch?.alpha = 0.5
+            btSearch?.backgroundColor = UIColor.gray
+            
         }
+        return true
+    }
     
     
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-      }
+        textField.resignFirstResponder()
+        return true
+    }
     
-        @objc func dismissKeyBoard() {
-            self.view.endEditing(true)
-        }
+    @objc func dismissKeyBoard() {
+        self.view.endEditing(true)
+    }
     
     @IBSegueAction func actionSencond(_ coder: NSCoder) -> UICollectionViewController? {
         
-        page = lbPage.text
-        text = lbText.text
         
+        
+        if lbText.text == "" || lbPage.text == "" {
+            page = "nil"
+            text = "1"
+        }else{
+            page = lbPage.text
+            text = lbText.text
+        }
         
         let controller = CollectionViewController(coder: coder)
         
-
+        
         controller?.text = text
         controller?.page = page
         
