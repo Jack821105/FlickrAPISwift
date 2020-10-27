@@ -36,7 +36,8 @@ class LilkeCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        Network.shared.getMyLike { (likePhoto) in
+        Network.shared.getMyLike { [weak self] (likePhoto) in
+            guard let self = self else{ return }
             if likePhoto != nil{
                 self.photoData = likePhoto
             }

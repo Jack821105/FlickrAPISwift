@@ -8,7 +8,7 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    
+    let imageCache = NSCache<NSURL, UIImage>()
     @IBOutlet weak var ivPhoto: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
     //    @IBOutlet weak var btLike: UIButton!
@@ -17,8 +17,16 @@ class CollectionViewCell: UICollectionViewCell {
     var userDefaults = UserDefaults.standard
     
     func fetchImage(url: URL, completion: @escaping (UIImage?) -> Void) {
+        
+        if let image = imageCache.object(forKey: url as NSURL) {
+            print("測試快取")
+            completion(image)
+            return
+        }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data, let image = UIImage(data: data) {
+                self.imageCache.setObject(image, forKey: url as NSURL)
+                print("測試第一次")
                 completion(image)
             } else {
                 completion(nil)

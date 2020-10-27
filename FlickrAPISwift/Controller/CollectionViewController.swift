@@ -10,7 +10,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController {
-    
+     
     //宣告區
     var page:String?
     var text:String?
@@ -47,7 +47,8 @@ class CollectionViewController: UICollectionViewController {
         
         
         //第一次進來抓取資料
-        Network.shared.fetchData(pageCount: page! , text: text!, page: pages) { (Photo) in
+        Network.shared.fetchData(pageCount: page! , text: text!, page: pages) { [weak self] (Photo) in
+            guard let self = self else{ return }
             if Photo != nil{
                 self.photoList = Photo
             }
@@ -75,7 +76,8 @@ class CollectionViewController: UICollectionViewController {
     @objc func loadData(){
         showLoadingView()
         isLoadingMore = true
-        Network.shared.fetchData(pageCount: page! , text: text!, page: pages) { (Photo) in
+        Network.shared.fetchData(pageCount: page! , text: text!, page: pages) {[weak self] (Photo) in
+            guard let self = self else { return }
             if Photo != nil{
                 self.photoList?.photos.photo.append(contentsOf: Photo.photos.photo)
                 self.dismissLoadingView()
